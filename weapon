@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class WeaponIn : MonoBehaviour
+{
+    public GameObject pest;
+    bool ryadom_pest = false;
+    public GameObject pestInPlayer;
+    public GameObject pestNotnPlayer;
+    private void OnTriggerEnter(Collider other)
+    {
+        ryadom_pest = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        ryadom_pest = false;
+    }
+    
+
+    void Update()
+    {
+      if(Input.GetKeyDown("e") && ryadom_pest == true)
+        {
+            pestInPlayer.SetActive(true);
+            pestNotnPlayer.SetActive(false);
+        }  
+    }
+}
