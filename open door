@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DoorController : MonoBehaviour
+{
+    public GameObject Door;
+    public bool Playyer = false;
+    public bool DorIsOpen = false;
+    private void OnTriggerEnter(Collider other)
+    {
+        Playyer = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Playyer = false;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown("e") && Playyer == true && DorIsOpen == false)
+        {
+            Door.GetComponent<Animator>().Play("Open");
+            DorIsOpen = true;
+            Door.GetComponent<AudioSource>().Play();
+        }
+        else if (Input.GetKeyDown("e") && Playyer == true && DorIsOpen == true)
+        {
+            Door.GetComponent<Animator>().Play("Close");
+            DorIsOpen = false;
+            Door.GetComponent<AudioSource>().Play();
+        }
+    }
+}
